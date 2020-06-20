@@ -8,8 +8,10 @@ import { HttpClient, HttpParams } from "@angular/common/http";
 })
 export class AppComponent {
   posts;
+  showSubmittedPost;
+
   constructor(private http:HttpClient) {
-    let params = new HttpParams().set("userId","1");
+    let params = new HttpParams().set("userId","6");
     this.http
     .get("https://jsonplaceholder.typicode.com/posts", {params})
     .subscribe((value: any) => {
@@ -17,5 +19,28 @@ export class AppComponent {
       console.log(this.posts);
     });
   }
+
+
+  submitPost() {
+    const postData = {
+      id: null,
+      userId: 20,
+      title: "Hey, this is the Title",
+      body: "Hey, there's the body of the post, I hope you would love to see the post"
+    };
+    
+    this.http
+    .post(
+      "https://jsonplaceholder.typicode.com/posts", postData)
+    .subscribe((value: any) => {
+       this.showSubmittedPost = value;
+       console.log(this.showSubmittedPost);
+     });
+
+
+
+
+  }
+
   title = 'covid19App';
 }

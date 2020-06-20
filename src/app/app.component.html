@@ -1,7 +1,20 @@
 <div>
   <app-summary></app-summary>
 
+  <h1>The Sample Posts</h1>
   <div *ngFor="let post of posts">
-    {{ post | json }}
+    <h2>{{ post.title }}</h2>
+    <p>{{ post.body }}</p>
+    <p>{{ post.userId }}</p>
   </div>
+
+  <button (click)="submitPost()">Submit Post</button>
+
+  <div *ngIf="showSubmittedPost">
+    <h1>The Custom Post</h1>
+    <h2>{{ showSubmittedPost.title }}</h2>
+    <p>{{ showSubmittedPost.body }}</p>  
+  </div>
+  
+
 </div>
