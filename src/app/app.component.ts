@@ -9,7 +9,13 @@ import { HttpClient, HttpParams } from "@angular/common/http";
 export class AppComponent {
   posts;
   showSubmittedPost;
-
+  postData = {
+    id: null,
+    userId: 20,
+    title: "",
+    body: "",
+  };
+  
   constructor(private http:HttpClient) {
     let params = new HttpParams().set("userId","6");
     this.http
@@ -22,24 +28,13 @@ export class AppComponent {
 
 
   submitPost() {
-    const postData = {
-      id: null,
-      userId: 20,
-      title: "Hey, this is the Title",
-      body: "Hey, there's the body of the post, I hope you would love to see the post"
-    };
-    
+    console.log(this.postData);
     this.http
-    .post(
-      "https://jsonplaceholder.typicode.com/posts", postData)
+    .post("https://jsonplaceholder.typicode.com/posts", this.postData)
     .subscribe((value: any) => {
        this.showSubmittedPost = value;
        console.log(this.showSubmittedPost);
      });
-
-
-
-
   }
 
   title = 'covid19App';
