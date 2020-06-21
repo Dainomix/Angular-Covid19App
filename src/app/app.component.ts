@@ -9,7 +9,7 @@ import { HttpClient, HttpParams } from "@angular/common/http";
 export class AppComponent {
   
   globalData:any = {};
-  countryData:any = {};
+  allCountriesData:any = {};
   USData: any = {};
 
   constructor(public http:HttpClient) {
@@ -17,9 +17,9 @@ export class AppComponent {
     .get("https://api.covid19api.com/summary")
     .subscribe((value: any) => {
       this.globalData = value.Global;
-      this.countryData = value.Countries;
+      this.allCountriesData = value.Countries;
 
-      this.countryData.forEach((countryList) => {
+      this.allCountriesData.forEach((countryList) => {
         if(countryList.CountryCode == "US") {
           this.USData = countryList;
         }
