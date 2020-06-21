@@ -8,15 +8,13 @@ import { HttpClient, HttpParams } from "@angular/common/http";
 })
 export class AppComponent {
   
-  globalData:any ="Here would be the API Result soon";
+  globalData:any = {};
 
   constructor(public http:HttpClient) {
     this.http
     .get("https://api.covid19api.com/summary")
     .subscribe((value: any) => {
-
       this.globalData = value.Global;
-      console.log(value.Global);
     });
   }
 
