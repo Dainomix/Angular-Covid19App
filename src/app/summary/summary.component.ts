@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { HttpClient } from "@angular/common/http";
 
 @Component({
   selector: 'app-summary',
@@ -7,9 +8,20 @@ import { Component, OnInit } from '@angular/core';
 })
 export class SummaryComponent implements OnInit {
 
-  constructor() { }
+  data:any = "";
+
+  constructor(public http:HttpClient) {
+    this.http
+    .get("https://api.covid19api.com/summary")
+    .subscribe((value: any) => {
+      console.log(value.Global);
+      console.log(value.Countries);
+      this.data = value.Global;
+    });
+   }
 
   ngOnInit(): void {
+
   }
 
 }
