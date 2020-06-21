@@ -1,5 +1,4 @@
-import { Component, OnInit } from '@angular/core';
-import { HttpClient } from "@angular/common/http";
+import { Component, Input, OnInit } from '@angular/core';
 
 @Component({
   selector: 'app-summary',
@@ -7,18 +6,11 @@ import { HttpClient } from "@angular/common/http";
   styleUrls: ['./summary.component.css']
 })
 export class SummaryComponent implements OnInit {
+  @Input() globalData:any;
 
-  data:any = "";
-
-  constructor(public http:HttpClient) {
-    this.http
-    .get("https://api.covid19api.com/summary")
-    .subscribe((value: any) => {
-      console.log(value.Global);
-      console.log(value.Countries);
-      this.data = value.Global;
-    });
-   }
+  constructor() {
+    console.log("Summary: " + this.globalData);
+  }
 
   ngOnInit(): void {
 
