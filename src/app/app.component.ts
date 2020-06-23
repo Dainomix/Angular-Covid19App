@@ -9,7 +9,7 @@ import { HttpClient, HttpParams } from "@angular/common/http";
 export class AppComponent {
   
   globalData:any = {};
-  allCountriesData:any = {};
+  allCountriesData:any = [];  // Not object but array
   USData: any = {};
 
   constructor(public http:HttpClient) {
